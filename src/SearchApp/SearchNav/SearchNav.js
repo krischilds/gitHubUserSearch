@@ -1,4 +1,10 @@
 import React from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import FormControl from "react-bootstrap/FormControl";
+
 //import styled from 'styled-components';
 //import PropTypes from 'prop-types';
 
@@ -25,16 +31,27 @@ const defaultProps = {};
 const SearchNav = props => {
   return (
     // handleSearchNavChange={this.handleSearchNavChange} handleSearchNavSubmit={this.handleSearchNavSubmit}
-    <div>
-      <form onSubmit={props.handleSearchNavSubmit}>
-        <label>
-          Name:
-          <input type="text" name="name" onBlur={props.handleSearchNavChange} />
-        </label>
-        <input className="btn btn-primary" type="submit" value="Submit" />
-      </form>
-      <div>SearchNav: {props.userName}</div>
-    </div>
+
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar.Brand href="#home">Search App</Navbar.Brand>
+      <Nav className="mr-auto">
+        <Nav.Link href="https://github.com/krischilds">
+          Back to Kris's Profile
+        </Nav.Link>
+      </Nav>
+
+      <Form inline onSubmit={props.handleSearchNavSubmit}>
+        <FormControl
+          type="text"
+          placeholder="Search"
+          className="mr-sm-2"
+          onBlur={props.handleSearchNavChange}
+        />
+        <Button variant="outline-info" type="submit">
+          Search
+        </Button>
+      </Form>
+    </Navbar>
   );
 };
 
