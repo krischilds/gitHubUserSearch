@@ -28,7 +28,9 @@ class SearchApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: ""
+      userName: null,
+      userData: null,
+      userRepoList: null
     };
   }
 
@@ -37,21 +39,67 @@ class SearchApp extends React.Component {
     return dataUrl;
   };
 
+  getUserReposUrl = userName => {
+    const dataUrl = `https://api.github.com/users/${userName}/repos`;
+    return dataUrl;
+  };
+
   handleSearchNavChange(event) {
     const userName = event.target.value;
-    if (userName !== this.state.userName) {
-      this.setState({ userName });
+    this.loadUser(userName);
+  }
 
+  handleSearchNavSubmit(event) {
+    event.preventDefault();
+    this.loadUser(this.state.userName);
+  }
+
+  findUser(userName) {
+    this.setState({ userName });
+    if (userName !== this.state.userName) {
       const userUrl = this.getUserUrl(userName);
 
       console.log("handleSearchNavSubmit URL = " + userUrl);
     }
   }
 
-  handleSearchNavSubmit(event) {
-    event.preventDefault();
-    console.log("handleSearchNavSubmit " + this.state.userName);
-  }
+  loadUser = userName => {
+    if (!userName) return;
+    const userUrl = this.getUserUrl(userName);
+
+    fetch(userUrl)
+      .then(response => {
+        if (response.ok) return response.json();
+        throw new Error("Request failed.");
+      })
+      .then(data => {
+        this.setState({ userData: data, userName: userName });
+        this.loadUserRepoList(userName);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  loadUserRepoList = userName => {
+    if (!userName) return;
+    const dataUrl = this.getUserReposUrl(userName);
+    fetch(dataUrl)
+      .then(response => {
+        if (response.ok) return response.json();
+        throw new Error("Request failed.");
+      })
+      .then(data => {
+        console.log("Load User Repo List");
+        console.log(data);
+        this.setState({ userRepoList: data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    // description
+  };
 
   render() {
     return (
@@ -61,7 +109,11 @@ class SearchApp extends React.Component {
           handleSearchNavChange={this.handleSearchNavChange.bind(this)}
           handleSearchNavSubmit={this.handleSearchNavSubmit.bind(this)}
         />
-        <SearchResults userName={this.state.userName} />
+        <SearchResults
+          userName={this.state.userName}
+          userData={this.state.userData}
+          userRepoList={this.state.userRepoList}
+        />
       </div>
     );
   }

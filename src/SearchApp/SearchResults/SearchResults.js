@@ -23,10 +23,20 @@ const defaultProps = {};
  *
  */
 const SearchResults = props => {
+  var userData = null;
+  if (props.userData) {
+    userData = Object.assign({}, props.userData, { userFound: true });
+  } else {
+    userData = Object.assign({}, { userFound: false });
+  }
+
+  const userRepoList = props.userRepoList || [];
   return (
     <section>
       <div>Search Results</div>
       <div>Username: {props.userName}</div>
+      <div>User Data: {userData.userFound ? "TRUE" : "FALSE"}</div>
+      <div>User Repo List: {userRepoList.length}</div>
     </section>
   );
 };
