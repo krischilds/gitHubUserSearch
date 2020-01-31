@@ -104,7 +104,6 @@ class SearchApp extends React.Component {
   render() {
     return (
       <div>
-        <h3>SearchApp</h3>
         <SearchNav
           handleSearchNavChange={this.handleSearchNavChange.bind(this)}
           handleSearchNavSubmit={this.handleSearchNavSubmit.bind(this)}
