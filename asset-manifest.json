@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/gitHubUserSearch/static/css/main.07a718d4.chunk.css",
+    "main.js": "/gitHubUserSearch/static/js/main.5821365d.chunk.js",
+    "main.js.map": "/gitHubUserSearch/static/js/main.5821365d.chunk.js.map",
+    "runtime~main.js": "/gitHubUserSearch/static/js/runtime~main.cce4d3df.js",
+    "runtime~main.js.map": "/gitHubUserSearch/static/js/runtime~main.cce4d3df.js.map",
+    "static/css/2.0996cbbd.chunk.css": "/gitHubUserSearch/static/css/2.0996cbbd.chunk.css",
+    "static/js/2.833caf29.chunk.js": "/gitHubUserSearch/static/js/2.833caf29.chunk.js",
+    "static/js/2.833caf29.chunk.js.map": "/gitHubUserSearch/static/js/2.833caf29.chunk.js.map",
+    "index.html": "/gitHubUserSearch/index.html",
+    "precache-manifest.9a0325a566f28ee9340c6ec4b2f3050f.js": "/gitHubUserSearch/precache-manifest.9a0325a566f28ee9340c6ec4b2f3050f.js",
+    "service-worker.js": "/gitHubUserSearch/service-worker.js",
+    "static/css/2.0996cbbd.chunk.css.map": "/gitHubUserSearch/static/css/2.0996cbbd.chunk.css.map",
+    "static/css/main.07a718d4.chunk.css.map": "/gitHubUserSearch/static/css/main.07a718d4.chunk.css.map"
+  }
+}
